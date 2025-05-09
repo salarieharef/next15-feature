@@ -1,29 +1,45 @@
-'use client'
+import { fetchApi } from "@/core/interceptore/fetchApi";
+import { setCookie } from "@/core/cookie/cookies";
+import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 
 
 const Login = () => {
-    const handleLogin = () => {
-        fetch("https://673ef547a9bc276ec4b66ea0.mockapi.io/users/user", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // "Authorization" : 'Bearer ' + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjdiNTVlZTQ5LTA0Y2ItNGMxYi04ZDE1LWM1N2NlMWFlNjUzZiIsInN1YiI6IjdiNTVlZTQ5LTA0Y2ItNGMxYi04ZDE1LWM1N2NlMWFlNjUzZiIsImp0aSI6IjkzYjcxMWJhLWQzNDAtNDkxMy05ZjYzLTg3ZWFiZTUxMmMxZSIsImVtYWlsIjoiYXNAZ21haWwuY29tIiwiVWlkIjoiUkhTdk12VnQ1amdlV25sUlJGNDhlaXdOVWlyT09COGx5MU5PQ3ZqVXVKcz1Fczc4ODk2Yjg2YjI3M2ZmMzRmY2UxOWQ2YjgwNGVmZjVhM2Y1NzQ3YWRhNGVhYTIyZjFkNDljMDFlNTJkZGI3ODc1YjRiIiwiZXhwIjoxNzQ0NTU2MDc4LCJpc3MiOiJTZXBlaHJBY2FkZW15IiwiYXVkIjoiU2VwZWhyQWNhZGVteSJ9.Uch0GMjvjZkO0I5Vlk8o_6jjJ4TfuMDViUgoBjeySPE"
-          },
-          body: JSON.stringify({
-            name: "aref",
-            age: "1",
-          }),
-        })
-        .then(res => res.json())  // first way to convert to json / second way in serverAction file
-        .then(res2 => console.log(res2))  
-      
+  const handleLogin = async (formData: FormData) => {
+    "use server";
+
+    try {
+      const obj = {
+        phoneOrGmail: formData.get("phoneOrGmail"), // 09100611077
+        password: formData.get("password"), // 1
+        rememberMe: formData.get("rememberMe") === "on" ? true : false,
       };
+      
+      const res:any = await fetchApi.post("/Sign/Login", obj);
+      console.log('Login Response:', res);
+
+      if(res.token){
+        console.log('Setting token:', res.token);
+        await setCookie("token", res.token);
+        console.log('Token set successfully');
+        redirect('/dashboard');
+      }
+    } catch (error) {
+      console.log('Login Error:', error);
+    }
+  };
 
   return (
     <div>
-        <button onClick={handleLogin}>Login</button>
+      <form action={handleLogin}>
+        <input type="text" name="phoneOrGmail" />
+        <input type="text" name="password" />
+        <label htmlFor="d1">rememberMe</label>
+        <input id="d1" type="checkbox" name="rememberMe" />
+        <button type="submit">login</button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
