@@ -11,7 +11,7 @@ const SimpleGet = async () => {
     "https://673ef547a9bc276ec4b66ea0.mockapi.io/users/user",
     { cache: "no-store" }
   );
-  const users:UserType[] = await res.json();
+  const users:UserType[] = await res?.json();
   return (
     <div>
       {users?.map((item) => {
