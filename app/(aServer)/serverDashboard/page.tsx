@@ -1,17 +1,9 @@
-import { getCookie } from '@/utils/serverCookies'
-import React from 'react'
+import { fetchApi } from '@/core/interceptore/fetchApi'
 
 const ServerDashboard = async () => {
-  const token = await getCookie('token')
 
-  const res = await fetch('https://classapi.sepehracademy.ir/api/SharePanel/GetProfileInfo', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    }
-  })
-  const data = await res.json()
+  const data = await fetchApi.get<any>('/SharePanel/GetProfileInfo')
+  
   console.log(data)
 
   return (

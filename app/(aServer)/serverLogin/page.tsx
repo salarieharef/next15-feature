@@ -1,30 +1,28 @@
 import { setCookie } from '@/utils/serverCookies'
 import { redirect } from 'next/navigation'
-import React from 'react'
+import { fetchApi } from '@/core/interceptore/fetchApi'
+
 
 const ServerLogin = () => {
   const handleLogin = async (formData: FormData) => {
     "use server"
-    const phoneOrGmail = formData.get('phoneOrGmail')
-    const password = formData.get('password')
-    const rememberMe = formData.get('rememberMe') === 'on' ? true : false
 
-    const res = await fetch('https://classapi.sepehracademy.ir/api/Sign/Login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        phoneOrGmail,
-        password,
-        rememberMe
-      })
-    })
-    const data = await res.json()
-    if(data.token){
-      await setCookie('token', data.token)
-      redirect('/serverDashboard')
-    }
+    // const phoneOrGmail = formData.get('phoneOrGmail')
+    // const password = formData.get('password')
+    // const rememberMe = formData.get('rememberMe') === 'on' ? true : false
+
+    // const res = await fetchApi.post<any>('/Sign/Login', {
+    //   phoneOrGmail,
+    //   password,
+    //   rememberMe
+    // })
+    
+    // if(res.token){
+    //   await setCookie('token', res.token)
+    //   redirect('/serverDashboard')
+    // }
+
+
   }
   return (
     <div>
