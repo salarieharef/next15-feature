@@ -1,3 +1,5 @@
+import { setCookie } from '@/utils/serverCookies'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 const ServerLogin = () => {
@@ -5,18 +7,24 @@ const ServerLogin = () => {
     "use server"
     const phoneOrGmail = formData.get('phoneOrGmail')
     const password = formData.get('password')
-    const rememberMe = formData.get('rememberMe')
+    const rememberMe = formData.get('rememberMe') === 'on' ? true : false
 
-    fetch('https://classapi.sepehracademy.ir/api/Sign/Login', {
+    const res = await fetch('https://classapi.sepehracademy.ir/api/Sign/Login', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         phoneOrGmail,
         password,
         rememberMe
       })
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
+    const data = await res.json()
+    if(data.token){
+      await setCookie('token', data.token)
+      redirect('/serverDashboard')
+    }
   }
   return (
     <div>

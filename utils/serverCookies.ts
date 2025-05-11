@@ -2,13 +2,13 @@
 
 import { cookies } from "next/headers";
 
-export async function setCookie(key: string, value: string) {
+export async function setCookie(key: string, value: string , httpOnly: boolean = false) {
   const cookieStore = await cookies();
 
   cookieStore.set({
     name: key, // نام کوکی
     value: value, // مقدار کوکی
-    httpOnly: true, // فقط سمت سرور قابل دسترسی است، امن‌تر (جلوگیری از XSS)
+    httpOnly: httpOnly, // فقط سمت سرور قابل دسترسی است، امن‌تر (جلوگیری از XSS)
     path: "/", // مسیر معتبر کوکی. '/' یعنی در تمام مسیرها معتبر است
     // secure: true,                 // فقط روی HTTPS ارسال شود (در لوکال لازم نیست، اما در پروDUCTION باید true باشه)
     // sameSite: 'lax',              // کنترل ارسال کوکی در درخواست‌های cross-site. مقادیر: 'strict' | 'lax' | 'none'
