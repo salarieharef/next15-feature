@@ -1,4 +1,4 @@
-import { deleteCookie, getAllCookies } from "@/utils/cookies";
+import { deleteCookie, getAllCookies } from "@/utils/serverCookies";
 
 const GPage = async () => {
   const cookies = await getAllCookies();
@@ -13,7 +13,7 @@ const GPage = async () => {
 
   return (
     <div>
-      <h1> remove cookie from list with external function</h1>
+      <h1> delete cookie from list with external function</h1>
       <div className="flex flex-wrap gap-2 ">
         {cookies.map((cookie) => (
           <div key={cookie.name} className=" w-1/5 h-20 bg-gray-300">
@@ -21,7 +21,7 @@ const GPage = async () => {
             <p>value = {cookie.value}</p>
             <form action={removeCookie}>
               <input type="hidden" name="key" value={cookie.name} />
-              <button type="submit">remove Cookie</button>
+              <button className="bg-red-300 px-3 py-1 rounded-2xl" type="submit">delete </button>
             </form>
           </div>
         ))}

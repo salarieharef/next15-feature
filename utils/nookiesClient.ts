@@ -8,7 +8,11 @@ export const setCookie = (key: string, value: string) => {
 }
 
 export const getCookie = (key: string) => {
-    return nookies.get(null, key)
+    // return nookies.get(null, key)
+
+    // or
+    const cookies = nookies.get(null)
+    return cookies[key]
 }
 
 export const deleteCookie = (key: string) => {

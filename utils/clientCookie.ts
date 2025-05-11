@@ -1,5 +1,5 @@
 export const setCookieClient = (key: string, value: string) => {
-    document.cookie = `${key}=${value}; path=/; max-age=3600`; 
+    document.cookie = `${key}=${value}; path=/; max-age=3600;expires=Sun, 01 Jan 2025 00:00:00 GMT;`; 
 }
 
 export const getCookieClient = (key: string) => {

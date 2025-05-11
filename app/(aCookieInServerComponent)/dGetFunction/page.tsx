@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { getCookie } from "@/utils/cookies";
+import { getCookie } from "@/utils/serverCookies";
 
 const DPage = () => {
   const show = async (formData: FormData) => {

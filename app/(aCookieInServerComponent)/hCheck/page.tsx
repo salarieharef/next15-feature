@@ -1,4 +1,4 @@
-import { hasCookie } from '@/utils/cookies'
+import { hasCookie } from '@/utils/serverCookies'
 import React from 'react'
 
 const HPage = () => {

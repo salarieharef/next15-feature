@@ -1,4 +1,4 @@
-import { setCookie } from "@/utils/cookies";
+import { setCookie } from "@/utils/serverCookies";
 
 
 const BPage = () => {

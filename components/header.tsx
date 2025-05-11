@@ -3,26 +3,51 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div className='h-10 flex gap-5 bg-gray-300'>
+    <div className=' flex gap-5 bg-gray-300'>
         <Link href='/' className='bg-blue-300 '>home</Link>
-        <Link href='/a' className='bg-blue-300 px-3'>a</Link>
-        <Link href='/b' className='bg-blue-300 px-3'>b</Link>
-        <Link href='/c' className='bg-blue-300 px-3'>c</Link>
-        <Link href='/d' className='bg-blue-300 px-3'>d</Link>
-        <Link href='/e' className='bg-blue-300 px-3'>e</Link>
-        <Link href='/f' className='bg-blue-300 px-3'>f</Link>
-        <Link href='/g' className='bg-blue-300 px-3'>g</Link>
-        <Link href='/h' className='bg-blue-300 px-3'>h</Link>
-        <Link href='/i' className='bg-blue-300 px-3'>i</Link>
-        <Link href='/j' className='bg-blue-300 px-3'>j</Link>
-        <Link href='/k' className='bg-blue-300 px-3'>k</Link>
-        <Link href='/l' className='bg-blue-300 px-3'>l</Link>
-        <Link href='/m' className='bg-blue-300 px-3'>m</Link>
-        <Link href='/n' className='bg-blue-300 px-3'>n</Link>
-        <Link href='/o' className='bg-blue-300 px-3'>o</Link>
-        <Link href='/o2' className='bg-blue-300 px-3'>o2</Link>
+        <div className=' bg-green-400 '>
+          <h2>server component</h2>
+          <div className='flex gap-0.5'>
+            <Link href='/aSet' className='bg-blue-300 px-1  py-1 rounded-2xl'>set</Link>
+            <Link href='/bSetFunction' className='bg-blue-300 px-1 py-1 rounded-2xl'>setFunction</Link>
+            <Link href='/cGet' className='bg-blue-300 px-1 py-1 rounded-2xl'>get</Link>
+            <Link href='/dGetFunction' className='bg-blue-300 px-1 py-1 rounded-2xl'>getFunction</Link>
+            <Link href='/eGetAll' className='bg-blue-300 px-1 py-1 rounded-2xl'>getAll</Link>
+            <Link href='/fDelete' className='bg-blue-300 px-1 py-1 rounded-2xl'>delete</Link>
+            <Link href='/gListAndDelete' className='bg-blue-300 px-1 py-1 rounded-2xl'>list&delete</Link>
+            <Link href='/hCheck' className='bg-blue-300 px-1 py-1 rounded-2xl'>check</Link>
 
+          </div>
+        </div>
+        <div  className=' bg-orange-400'>
+          <h2>client component</h2>
+          <div className='flex gap-1'>
+            <Link href='/iSet' className='bg-blue-300 px-1 py-1 rounded-2xl'>set</Link>
+            <Link href='/jSetFunction' className='bg-blue-300 px-1 py-1 rounded-2xl'>setFunction</Link>
+            <Link href='/kSimpleGet' className='bg-blue-300 px-1 py-1 rounded-2xl'>simpleGet</Link>
+            <Link href='/lGet' className='bg-blue-300 px-1 py-1 rounded-2xl'>get</Link>
+            <Link href='/mDelete' className='bg-blue-300 px-1 py-1 rounded-2xl'>delete</Link>
+            <Link href='/nGetAll' className='bg-blue-300 px-1 py-1 rounded-2xl'>getAll</Link>
+          </div>
+        </div>
 
+        <div  className=' bg-fuchsia-400'>
+          <h2>js-cookie(just client)</h2>
+          <div className='flex gap-1'>
+            <Link href='/o1Set' className='bg-blue-300 px-1 py-1 rounded-2xl'>set</Link>
+            <Link href='/o2GetAndDelete' className='bg-blue-300 px-1 py-1 rounded-2xl'>getAndDelete</Link>
+          </div>
+        </div>
+
+        <div  className=' bg-yellow-400'>
+          <h2>nookies</h2>
+          <div className='flex gap-1'>
+            <Link href='/p1SetServer' className='bg-blue-300 px-1 py-1 rounded-2xl'>setServer</Link>
+            <Link href='/p2GetAndDeleteServer' className='bg-blue-300 px-1 py-1 rounded-2xl'>getAndDeleteServer</Link>
+            <Link href='/p3SetClient' className='bg-blue-300 px-1 py-1 rounded-2xl'>setClient</Link>
+            <Link href='/p4GetAndDeleteClient' className='bg-blue-300 px-1 py-1 rounded-2xl'>getAndDeleteClient</Link>
+          </div>
+        </div>
 
 
     </div>

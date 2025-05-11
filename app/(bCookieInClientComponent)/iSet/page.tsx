@@ -6,7 +6,7 @@ const IPage = () => {
     // const formData = new FormData(e.target as HTMLFormElement);
     const key = (e.target as HTMLFormElement).key.value;
     const value = (e.target as HTMLFormElement).value.value;
-    document.cookie = `${key}=${value}; path=/; max-age=3600`; // 1 ساعت
+    document.cookie = `${key}=${value}; path=/; max-age=360000`; // 100 ساعت
   };
 
   return (

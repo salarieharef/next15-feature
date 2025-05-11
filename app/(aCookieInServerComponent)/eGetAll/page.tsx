@@ -1,4 +1,4 @@
-import { getAllCookies } from '@/utils/cookies';
+import { getAllCookies } from '@/utils/serverCookies';
 import React from 'react'
 
 const EPage = async () => {

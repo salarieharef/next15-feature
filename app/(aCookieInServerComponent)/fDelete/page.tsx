@@ -1,4 +1,4 @@
-import { deleteCookie } from "@/utils/cookies";
+import { deleteCookie } from "@/utils/serverCookies";
 import React from "react";
 
 const FPage = () => {
@@ -9,7 +9,7 @@ const FPage = () => {
   };
   return (
     <div>
-      <h1> remove cookie with external function </h1>
+      <h1> delete cookie with external function </h1>
       <form action={removeCookie}>
         <input type="text" name="key" placeholder="key" />
         <button type="submit">remove Cookie</button>

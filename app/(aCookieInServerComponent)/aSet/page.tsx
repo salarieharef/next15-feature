@@ -1,4 +1,4 @@
-import { setCookie } from "@/utils/cookies";
+import { setCookie } from "@/utils/serverCookies";
 import { cookies } from "next/headers";
 
 const APage = async () => {
