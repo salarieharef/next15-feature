@@ -8,15 +8,8 @@ const Header = () => {
         <div className=' bg-green-400 '>
           <h2>server component</h2>
           <div className='flex gap-0.5'>
-            <Link href='/aSet' className='bg-blue-300 px-1  py-1 rounded-2xl'>set</Link>
-            <Link href='/bSetFunction' className='bg-blue-300 px-1 py-1 rounded-2xl'>setFunction</Link>
-            <Link href='/cGet' className='bg-blue-300 px-1 py-1 rounded-2xl'>get</Link>
-            <Link href='/dGetFunction' className='bg-blue-300 px-1 py-1 rounded-2xl'>getFunction</Link>
-            <Link href='/eGetAll' className='bg-blue-300 px-1 py-1 rounded-2xl'>getAll</Link>
-            <Link href='/fDelete' className='bg-blue-300 px-1 py-1 rounded-2xl'>delete</Link>
-            <Link href='/gListAndDelete' className='bg-blue-300 px-1 py-1 rounded-2xl'>list&delete</Link>
-            <Link href='/hCheck' className='bg-blue-300 px-1 py-1 rounded-2xl'>check</Link>
-
+            <Link href='/serverLogin' className='bg-blue-300 px-1  py-1 rounded-2xl'>serverLogin</Link>
+            <Link href='/serverDashboard' className='bg-blue-300 px-1  py-1 rounded-2xl'>serverDashboard</Link>
           </div>
         </div>
         <div  className=' bg-orange-400'>
