@@ -1,7 +1,8 @@
 "use client";
 import { setCookieClient } from "@/utils/clientCookie";
-import axios from "axios";
+import axiosApi from "@/core/interceptore/axiosApi";
 import { redirect } from "next/navigation";
+import axios from "axios";
 
 const ClientLogin = () => {
   const handleLogin = async (e:any) => {
@@ -10,18 +11,18 @@ const ClientLogin = () => {
     const password = e.target.password.value
     const rememberMe = e.target.rememberMe.checked
 
-    const res = await axios.post('https://classapi.sepehracademy.ir/api/Sign/Login', {
+    const res :any = await axiosApi.post('/Sign/Login', {
       phoneOrGmail,
       password,
       rememberMe
     })
 
-    console.log(res.data)
+    console.log(res)
 
-    if(res.data.token){
-      setCookieClient('token', res.data.token)
-      redirect('/clientDashboard')
-    }
+      if(res.token){
+        setCookieClient('token', res.token)
+        redirect('/clientDashboard')
+      }
   };
   return (
     <div>

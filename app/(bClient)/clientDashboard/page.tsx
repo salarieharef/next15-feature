@@ -2,7 +2,7 @@
 
 import { getCookieClient } from '@/utils/clientCookie'
 import { getCookie } from '@/utils/jsCookie'
-import axios from 'axios';
+import axiosApi from "@/core/interceptore/axiosApi";
 import { useEffect, useState } from 'react';
 
 
@@ -12,10 +12,8 @@ const ClientDashboard = () => {
   const token = getCookie('token') // or const token = getCookieClient('token')
 
   const fetchData = async () => {
-    const res = await axios.get('https://classapi.sepehracademy.ir/api/SharePanel/GetProfileInfo', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    setData(res.data)
+    const res = await axiosApi.get<any>('/SharePanel/GetProfileInfo')
+    setData(res)
   }
   
   

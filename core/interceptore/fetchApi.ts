@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { getCookie, deleteCookie } from "@/utils/serverCookies"; 
-// import { deleteCookie } from "@/utils/jsCookie";
+import { getCookie } from "@/utils/serverCookies"; 
+import { deleteCookie } from "@/utils/jsCookie";
 import { redirect } from 'next/navigation'
+
 
 
 const baseURL = 'https://classapi.sepehracademy.ir/api'
@@ -19,7 +20,7 @@ const onError = async (error: Response | Error) => {
 
     if (error instanceof Response) {
         if (error.status === 401) {
-            // await deleteCookie('token');
+            deleteCookie('token');
             redirect('/serverLogin');
         }
 
@@ -27,7 +28,7 @@ const onError = async (error: Response | Error) => {
             console.log("Client request error:", error.status);
         }
     } else if (error.message === "Network Error") {
-        // await deleteCookie('token');
+        deleteCookie('token');
         redirect('/serverLogin');
     }
 

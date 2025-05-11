@@ -7,20 +7,20 @@ const ServerLogin = () => {
   const handleLogin = async (formData: FormData) => {
     "use server"
 
-    // const phoneOrGmail = formData.get('phoneOrGmail')
-    // const password = formData.get('password')
-    // const rememberMe = formData.get('rememberMe') === 'on' ? true : false
+    const phoneOrGmail = formData.get('phoneOrGmail')
+    const password = formData.get('password')
+    const rememberMe = formData.get('rememberMe') === 'on' ? true : false
 
-    // const res = await fetchApi.post<any>('/Sign/Login', {
-    //   phoneOrGmail,
-    //   password,
-    //   rememberMe
-    // })
+    const res = await fetchApi.post<any>('/Sign/Login', {
+      phoneOrGmail,
+      password,
+      rememberMe
+    })
     
-    // if(res.token){
-    //   await setCookie('token', res.token)
-    //   redirect('/serverDashboard')
-    // }
+    if(res.token){
+      await setCookie('token', res.token)
+      redirect('/serverDashboard')
+    }
 
 
   }
