@@ -12,20 +12,6 @@ const Header = () => {
             <Link href='/serverDashboard' className='bg-blue-300 px-1  py-1 rounded-2xl'>serverDashboard</Link>
           </div>
         </div>
-
-        <div  className=' bg-orange-400'>
-          <h2>client component</h2>
-          <div className='flex gap-1'>
-            <Link href='/clientLogin' className='bg-blue-300 px-1 py-1 rounded-2xl'>clientLogin</Link>
-            <Link href='/clientDashboard' className='bg-blue-300 px-1 py-1 rounded-2xl'>clientDashboard</Link>
-
-          </div>
-        </div>
-
-
-
-
-
     </div>
   )
 }
