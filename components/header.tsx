@@ -12,7 +12,7 @@ const Header = () => {
           </div>
         </div>
 
-        
+{/*         
         <Link href='/' className='bg-blue-300 '>home</Link>
         <Link href='/login' className='bg-blue-300 '>login</Link>
         <Link href='/serverAction' className='bg-blue-300 '>serverAction</Link>
@@ -20,7 +20,7 @@ const Header = () => {
         <Link href='/serverAction3' className='bg-blue-300 '>serverAction3</Link>
         <Link href='/serverAction4' className='bg-blue-300 '>useFormStatus</Link>
         <Link href='/serverAction5' className='bg-blue-300 '>useActionState</Link>
-        <Link href='/serverAction6' className='bg-blue-300 '>useFormState</Link>
+        <Link href='/serverAction6' className='bg-blue-300 '>useFormState</Link> */}
 
 
     </div>
