@@ -9,6 +9,9 @@ const Header = () => {
         <Link href='/serverAction' className='bg-blue-300 '>serverAction</Link>
         <Link href='/serverAction2' className='bg-blue-300 '>serverAction2</Link>
         <Link href='/serverAction3' className='bg-blue-300 '>serverAction3</Link>
+        <Link href='/serverAction4' className='bg-blue-300 '>useFormStatus</Link>
+        <Link href='/serverAction5' className='bg-blue-300 '>useActionState</Link>
+
     </div>
   )
 }

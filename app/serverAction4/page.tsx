@@ -1,7 +1,7 @@
-'use client'
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { revalidatePath } from "next/cache";
+import React from "react";
 import { handleAdd } from "../../function/postAction";
+import SubmitButton4 from "@/components/SubmitButton4";
 
 type UserType = {
   id: number;
@@ -9,22 +9,18 @@ type UserType = {
   age: number;
 };
 
-const ServerAction3 =  () => {
-  const [users, setUsers] = useState<UserType[]>([]);
+const ServerAction4 = async () => {
+  const res = await fetch(
+    "https://673ef547a9bc276ec4b66ea0.mockapi.io/users/user",
+    { cache: "no-store" }
+  );
+  const users: UserType[] = await res.json();
 
-  const getUsers = async () => {
-    const res = await axios.get(
-      "https://673ef547a9bc276ec4b66ea0.mockapi.io/users/user"
-    );
-    setUsers(res.data);
-  };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+
   return (
     <div>
-      <h1>serveraction + external function + use client</h1>
+      <h1>useFormStatus</h1>
       <div className="flex flex-wrap gap-2">
         {users?.map((item) => {
           return (
@@ -39,10 +35,10 @@ const ServerAction3 =  () => {
       <form action={handleAdd}>
         <input name="name" placeholder="name" />
         <input name="age" placeholder="age" />
-        <button type="submit">Submit</button>
+        <SubmitButton4/>
       </form>
     </div>
   );
 };
 
-export default ServerAction3;
+export default ServerAction4;

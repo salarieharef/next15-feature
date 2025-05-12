@@ -1,6 +1,6 @@
 import { revalidatePath } from "next/cache";
 import React from "react";
-import { handleAdd } from "../function/postAction";
+import { handleAdd } from "../../function/postAction";
 
 type UserType = {
   id: number;
@@ -19,6 +19,7 @@ const ServerAction2 = async () => {
 
   return (
     <div>
+      <h1>serveraction + external function</h1>
       <div className="flex flex-wrap gap-2">
         {users?.map((item) => {
           return (
