@@ -1,10 +1,10 @@
 'use client'
-import { useState, startTransition } from 'react';
+import { useState, useTransition } from 'react';
 
-function StartTransitionPage() {
+function UseTransitionPage() {
   const [value, setValue] = useState<string>('x');
   const [items, setItems] = useState<any>(null);
-  // const [isPending, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const handleChange = () => {
     
@@ -30,7 +30,7 @@ function StartTransitionPage() {
     <div>
       <div >
         <h1>{value}</h1>
-        <button onClick={handleChange}  className='disabled:bg-red-400'>startTransition</button>
+        <button onClick={handleChange} disabled={isPending} className='disabled:bg-red-400'>startTransition</button>
         <br />
         <button onClick={handleRandom} >no startTransition</button>
       </div>
@@ -44,4 +44,4 @@ function StartTransitionPage() {
   );
 }
 
-export default StartTransitionPage;
+export default UseTransitionPage;

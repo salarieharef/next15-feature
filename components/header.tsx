@@ -25,6 +25,7 @@ const Header = () => {
             {/* <Link href='/noStartTransition' className='bg-blue-400 p-1 text-sm' >noStartTransition</Link>
             <Link href='/withStartTransition' className='bg-blue-400 p-1 text-sm' >withStartTransition</Link> */}
             <Link href='/startTransition' className='bg-blue-400 p-1 text-sm' >startTransition</Link>
+            <Link href='/useTransition' className='bg-blue-400 p-1 text-sm' >useTransition</Link>
 
           </div>
 
