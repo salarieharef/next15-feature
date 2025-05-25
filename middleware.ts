@@ -1,21 +1,36 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { match as matchLocale } from '@formatjs/intl-localematcher'
+import Negotiator from 'negotiator'
 
-const authRoutes = ['/login']
-const privateRoutes = ['/dashboard', '/editInfo']
-const isLoggedIn = true
+const locales = ['fa', 'en']
+const defaultLocale = 'fa'
 
-export default function middleware(req: NextRequest) {
-    // console.log('middleware')
-  const pathname = req.nextUrl.pathname
-  console.log(pathname)
+function getLocale(request: NextRequest): string {
+  const negotiatorHeaders: Record<string, string> = {}
+  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
-//   const isLoggedIn = req.cookies.get('isLoggedIn')
-  if (privateRoutes.includes(pathname) && !isLoggedIn) {
-    return NextResponse.redirect(new URL('/login', req.url))
-  }
-  else if (authRoutes.includes(pathname) && isLoggedIn) {
-    return NextResponse.redirect(new URL('/dashboard', req.url))
-  }
-
-  return NextResponse.next()
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
+  
+  return matchLocale(languages, locales, defaultLocale)
 }
+
+export default function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  )
+
+  if (pathnameIsMissingLocale) {
+    const locale = getLocale(request)
+    return NextResponse.redirect(
+      new URL(`/${locale}${pathname}`, request.url)
+    )
+  }
+}
+
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
+} 
